@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>FOLIO — Leon Klimek, fotografia</title>
+    <meta name="description" content="Leon Klimek — portrety, ruch i życie ulicy. Portfolio fotograficzne i kontakt." />
+    <meta name="theme-color" content="#fef9ef" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:title" content="FOLIO — Leon Klimek" />
+    <meta property="og:description" content="Portrety, ruch i życie ulicy." />
+    <meta property="og:image" content="/photos/pole-o-zachodzie-1600.webp" />
+    <link
+      rel="preload"
+      as="image"
+      href="/photos/pole-o-zachodzie-1600.webp"
+      imagesrcset="/photos/pole-o-zachodzie-480.webp 480w, /photos/pole-o-zachodzie-960.webp 960w, /photos/pole-o-zachodzie-1600.webp 1600w, /photos/pole-o-zachodzie-2400.webp 2400w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+    <link rel="preload" as="image" href="/folio-logo.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding: 24px; font-family: sans-serif">FOLIO — Leon Klimek. Ta strona potrzebuje JavaScriptu, aby wyświetlić galerię.</p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
