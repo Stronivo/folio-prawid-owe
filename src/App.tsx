@@ -3,6 +3,9 @@ import Logo, { type LogoHandle } from './components/Logo';
 import HeroScene from './components/HeroScene';
 import Gallery from './components/Gallery';
 import Game from './components/Game';
+import Posters from './components/Posters';
+import TimesOfDay from './components/TimesOfDay';
+import SportTransition from './components/SportTransition';
 import About from './components/About';
 import Contact from './components/Contact';
 import { SITE } from './config';
@@ -43,6 +46,11 @@ export default function App() {
     return () => clearTimeout(t);
   }, []);
 
+  // bez intro zdjęcie główne rusza od razu
+  useEffect(() => {
+    if (!intro) window.dispatchEvent(new Event('folio:reveal'));
+  }, [intro]);
+
   useLayoutEffect(() => {
     if (!intro) return;
     const html = document.documentElement;
@@ -79,6 +87,7 @@ export default function App() {
         /* */
       }
       setIntroDone(true);
+      window.dispatchEvent(new Event('folio:reveal'));
     };
 
     const skip = () => end();
@@ -86,13 +95,14 @@ export default function App() {
     const t0 = setTimeout(() => skipEvents.forEach((ev) => window.addEventListener(ev, skip, { once: true, passive: true })), 250);
 
     (async () => {
-      await wait(180);
+      await wait(150);
       if (cancelled) return;
-      logoRef.current?.blink(420);
-      await wait(560);
+      logoRef.current?.blink(400);
+      await wait(470);
       if (cancelled) return;
+      window.dispatchEvent(new Event('folio:reveal'));
       const flight = link.animate([{ transform: from }, { transform: 'translate(0px, 0px) scale(1)' }], {
-        duration: 860,
+        duration: 840,
         easing: 'cubic-bezier(.62,0,.18,1)',
         fill: 'forwards',
       });
@@ -148,6 +158,9 @@ export default function App() {
       <main>
         <HeroScene scene={!reduced} />
         <Gallery scene={!reduced} />
+        <Posters />
+        <TimesOfDay />
+        <SportTransition />
         <Game />
         <About />
         <Contact />

@@ -18,7 +18,7 @@ export interface LayoutOptions {
 export function layoutOptions(width: number, vh: number): LayoutOptions {
   if (width < 600) return { gap: 10, rowGap: 46, pad: 5, pattern: [1, 2], maxImgH: vh * 0.72 };
   if (width < 1000) return { gap: 18, rowGap: 52, pad: 8, pattern: [2, 2, 1], maxImgH: vh * 0.7 };
-  return { gap: 24, rowGap: 58, pad: 10, pattern: [2, 3, 1], maxImgH: Math.min(vh * 0.74, 760) };
+  return { gap: 24, rowGap: 58, pad: 10, pattern: [2, 2, 1], maxImgH: Math.min(vh * 0.74, 760) };
 }
 
 /**

@@ -106,7 +106,7 @@ export default function Contact() {
         <h2 id="contact-title" className="display contact__title">
           Masz pomysł na zdjęcia?
         </h2>
-        <p className="contact__lead">Napisz, co chodzi Ci po głowie — miejsce, porę dnia, kto ma być w kadrze. Odpiszę na podany e-mail.</p>
+        <p className="contact__lead">Napisz, co chodzi Ci po głowie — miejsce w Żorach lub okolicy, porę dnia, kto ma być w kadrze. Odpiszę na podany e-mail.</p>
         {demo && (
           <p className="contact__demo-note">
             Formularz działa w trybie demonstracyjnym: adres Formspree nie jest jeszcze ustawiony, więc wiadomości nie są wysyłane.
@@ -177,7 +177,7 @@ export default function Contact() {
 
           <div className="form__submit">
             <button type="submit" className="btn btn--ink" disabled={status === 'sending'}>
-              {status === 'sending' ? 'Wysyłanie…' : 'Wyślij wiadomość'}
+              {status === 'sending' ? 'Wysyłanie…' : 'Napisz do Leona'}
             </button>
           </div>
         </form>

@@ -72,6 +72,18 @@ export default function Gallery({ scene }: { scene: boolean }) {
     el.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   };
 
+  // przejście z plakatów kategorii: ustaw filtr i wróć do galerii
+  useEffect(() => {
+    const onFilter = (e: Event) => {
+      const f = (e as CustomEvent<string>).detail as Filter;
+      if (!FILTERS.some((x) => x.id === f)) return;
+      setFilter(f);
+      document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+    };
+    window.addEventListener('folio:filter', onFilter);
+    return () => window.removeEventListener('folio:filter', onFilter);
+  }, []);
+
   // głęboki link #zdjecie-<slug> (np. powrót przyciskiem „wstecz”)
   useEffect(() => {
     const fromHash = () => {

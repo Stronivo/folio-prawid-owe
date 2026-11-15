@@ -13,7 +13,9 @@ const FORMSPREE_ENDPOINT = '';
 
 export const SITE = {
   photographer: 'Leon Klimek',
-  tagline: 'Portrety, ruch i życie ulicy.',
+  tagline: 'Fotograf • Żory i okolice',
+  /** Miejsce działania — pojawia się w sekcji „O mnie”. */
+  area: 'Żorach i okolicach',
 
   /**
    * Oznaczenie „Zdjęcia przykładowe” przy galerii i w podglądzie.
