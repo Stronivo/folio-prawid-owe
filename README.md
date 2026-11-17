@@ -1,54 +1,39 @@
 # FOLIO — Leon Klimek
 
-Strona fotograficzna: React + TypeScript + CSS (Vite). Bez płatnych bibliotek i usług.
+Strona marki fotograficznej FOLIO. React + TypeScript + Vite, płynne przewijanie (Lenis), bez płatnych usług.
 
 ```bash
 npm install
-npm run dev      # podgląd lokalny: http://localhost:5173
+npm run dev      # http://localhost:5173
 npm run build    # wersja produkcyjna w dist/
 ```
 
-## Co ustawić przed publikacją
+## Sekcje
+
+1. **Hero** — pełnoekranowe zdjęcie, wejście przez „otwarcie kadru” i błysk flesza, logo z obracającą się przysłoną.
+2. **Manifest** — słowa nagłówka zapalają się w trakcie przewijania.
+3. **Portfolio** — nieregularna siatka, filtry kategorii, lightbox (strzałki, Esc, przesunięcie palcem).
+4. **Featured project „Nocturne”** — przypięta sekcja przewijana poziomo.
+5. **Proces** — przyklejony kadr, zdjęcia odsłaniane kurtyną, licznik 01–04.
+6. **Kontakt** — formularz + dane kontaktowe.
+
+## Co uzupełnić przed publikacją
 
 | Co | Gdzie |
 | --- | --- |
-| Adres formularza Formspree | `src/config.ts` → stała `FORMSPREE_ENDPOINT` (albo zmienna `VITE_FORMSPREE_ENDPOINT` na Vercel) |
-| Oznaczenie „Zdjęcia przykładowe” | `src/config.ts` → `showSampleLabel: false` |
-| Zdjęcia, kategorie, podpisy, opisy alternatywne, punkty kadrowania | `src/data/photos.ts` (pliki w `public/photos`) |
-| Ramka bohatera zdjęcia głównego (narożniki ostrości) | `HERO_SUBJECT` w `src/data/photos.ts` |
-| Nazwisko za sylwetką (linia liter, maska pierwszego planu) | `HERO_NAME` w `src/data/photos.ts` |
-| Plakaty „Ludzie / Ruch / Miejsca” | `POSTERS` w `src/data/photos.ts` |
-| Jedno miejsce, trzy pory dnia (3 zdjęcia z tej samej pozycji, nazwa miejsca) | `TIMES` w `src/data/photos.ts` |
-| Sportowe przejście (akcja, piłka, portret) | `SPORT` w `src/data/photos.ts` |
-| Pasek klatek w „O mnie” | `FILMSTRIP` w `src/data/photos.ts` |
-| Panorama do gry „Złap kadr” | `PANO` i `RIDER` w `src/components/Game.tsx` |
+| E-mail, Instagram, lokalizacja | `src/data.ts` → `SITE` (obecny e-mail i Instagram to **przykłady**) |
+| Formularz | `src/data.ts` → `FORMSPREE_ENDPOINT` albo zmienna `VITE_FORMSPREE_ENDPOINT` na Vercel. Bez niej formularz otwiera gotową wiadomość w programie pocztowym. |
+| Zdjęcia, tytuły, kategorie | `src/data.ts` → `PHOTOS`, `FEATURED`, `PROCESS`, `HERO` |
 
-Pierwsze zdjęcie na liście `PHOTOS` jest zdjęciem głównym i pierwszą odbitką w portfolio.
-Pliki zdjęć: `public/photos/<slug>-<szerokość>.webp` (np. 480, 960, 1600, 2400 px).
+Pliki zdjęć: `public/photos/<slug>-<szerokość>.webp` (640, 1080, 1600, 2400).
 
-## Formspree
+## Logo
 
-1. Załóż darmowy formularz na formspree.io i skopiuj adres w postaci `https://formspree.io/f/xxxxxxx`.
-2. Wklej go w `src/config.ts` do `FORMSPREE_ENDPOINT` **albo** dodaj na Vercel zmienną
-   `VITE_FORMSPREE_ENDPOINT` (Settings → Environment Variables) i zrób ponowne wdrożenie.
-3. Bez adresu formularz działa w uczciwym trybie demonstracyjnym — niczego nie wysyła.
+`src/logoPaths.ts` to wektorowy obrys 1:1 dostarczonego pliku `public/folio-logo.png`
+(litery, przysłona i gwiazdka jako osobne warstwy — do animacji). Kształt znaku nie został zmieniony;
+gwiazdka ma kolor flesza `#ff4f1f`.
 
-## Vercel
+## Zdjęcia demonstracyjne
 
-Zaimportuj folder `folio` jako projekt. Vercel rozpozna Vite automatycznie
-(build: `npm run build`, katalog wyjściowy: `dist`).
-
-## Maska pierwszego planu
-
-Na zdjęciu głównym nazwisko stoi za sylwetką. Zasłania je plik `public/photos/skok-maska-*.webp`:
-ten sam kadr co zdjęcie główne, z przezroczystym tłem wszędzie poza bohaterem.
-Po zmianie zdjęcia głównego przygotuj nową maskę (np. „Usuń tło” w edytorze, eksport
-w tym samym rozmiarze) albo ustaw `HERO_NAME.cutout: null` — wtedy nazwisko leży za całym kadrem bez zasłaniania.
-
-## Zdjęcia przykładowe
-
-Zdjęcia demonstracyjne pochodzą z Unsplash (licencja Unsplash, przez picsum.photos)
-oraz z rawpixel (CC0, przez Openverse): piłka, boisko, portret zawodniczki.
-Warianty „trzy pory dnia” zostały przygotowane cyfrowo z jednego zdjęcia ulicy.
-Autor każdego zdjęcia jest zapisany w `credit` i widoczny w podglądzie, dopóki
-`showSampleLabel` jest włączone. Logo FOLIO: `public/folio-logo.png` (przycięte, z przezroczystym tłem).
+Wszystkie zdjęcia pochodzą z Unsplash (licencja Unsplash) i służą wyłącznie jako materiał przykładowy —
+podmień je na własne prace. Informacja w stopce: „Zdjęcia demonstracyjne: Unsplash”.
